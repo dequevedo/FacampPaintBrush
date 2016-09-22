@@ -17,7 +17,6 @@ abstract class Shape implements Movable{
     public void moveDown() {
         y++;
     }
-    
 
     @Override
     public void moveRight() {

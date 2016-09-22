@@ -1,10 +1,9 @@
 package Pacote;
+
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 public class MyPaintBrush extends JFrame{
     PaintBrushPanel panel;
@@ -17,14 +16,6 @@ public class MyPaintBrush extends JFrame{
         panel = new PaintBrushPanel(this);
         this.getContentPane().add(panel);
         this.setVisible(true);
-        
-        JLabel str = new JLabel("Select a Jar : ");
-        this.add(str);
-        setSize(500,700);
-        /*
-        JTextField field = new JTextField(20);
-        add(field);
-        setSize(100, 100);*/
     }
     
     List<Shape> listOfShapes = new ArrayList<Shape>();
