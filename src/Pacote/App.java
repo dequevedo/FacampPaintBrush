@@ -1,22 +1,15 @@
 package Pacote;
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class App {
 
     public static void main(String[] args) throws TooManyShapesException, InterruptedException  {
         MyPaintBrush paintbrush = new MyPaintBrush();
         
-        /*
-        Scanner leitor = new Scanner(System.in);
-        System.out.println("Insert squares amount: ");
-        int squareNum = leitor.nextInt();
-        System.out.println("Insert circles amount: ");
-        int circleNum = leitor.nextInt();*/
+        int squareNum = 10;
+        int circleNum = 10;
         
-        int squareNum = 300;
-        int circleNum = 300;
-
         for(int x = 0; x < squareNum; x++){
             paintbrush.addShape(new Square(
                 Random.rRange(0,paintbrush.getWidth()),
@@ -25,6 +18,7 @@ public class App {
                 Random.rRange(0,50),
                 Random.rColor()));
         }
+        
         for(int x = 0; x < circleNum; x++){
             paintbrush.addShape(new Circle(
                 Random.rRange(0,paintbrush.size().width), 
@@ -33,10 +27,20 @@ public class App {
                 Random.rRange(0,50), 
                 Random.rColor()));
         }
+        
 
         while(true){
-            Thread.sleep(20);
-                paintbrush.moveShapes();
+            if(squareNum + circleNum <= 100){
+                try{
+                    Thread.sleep(20);
+                    paintbrush.moveShapes();
+                    paintbrush.repaint();
+                }catch(InterruptedException ex){
+                    System.out.println(ex);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "There are more than 100 shapes!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 }
